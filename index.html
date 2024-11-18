@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/mp.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>NLine Voyager</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="montserrat site-title">NLine Voyager</h1>
+                
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" class="montserrat" placeholder="Search...">
+                        <select id="search-engine" class="montserrat">
+                            <option value="https://www.google.com/search?q=">Google</option>
+                            <option value="https://duckduckgo.com/?q=" selected>DuckDuckGo</option>
+                        </select>
+                        <button id="search-btn" class="montserrat">Search</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const searchEngine = document.getElementById('search-engine');
+        const searchBtn = document.getElementById('search-btn');
+
+        searchBtn.addEventListener('click', () => {
+            const query = searchInput.value.trim();
+            if (query) {
+                const url = `${searchEngine.value}${query}`;
+                window.open(url, '_blank');
+            }
+        });
+
+        // Optional: Allow searching by pressing Enter
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
