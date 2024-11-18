@@ -15,39 +15,36 @@
             <div class="header-content">
                 <h1 class="montserrat site-title">NLine Voyager</h1>
                 
-                <div class="search-container">
-                    <div class="search-bar">
-                        <input type="text" id="search-input" class="montserrat" placeholder="Search...">
-                        <select id="search-engine" class="montserrat">
-                            <option value="https://www.google.com/search?q=">Google</option>
-                            <option value="https://duckduckgo.com/?q=" selected>DuckDuckGo</option>
-                        </select>
-                        <button id="search-btn" class="montserrat">Search</button>
-                    </div>
-                </div>
-            </div>
-        </header>
+                
+<div class="search-container">
+    <div class="search-bar">
+        <input type="text" id="search-input" class="montserrat" placeholder="Search...">
+        <select id="search-engine" class="montserrat">
+            <option value="https://www.google.com/search?q=">Google</option>
+            <option value="https://duckduckgo.com/?q=" selected>DuckDuckGo</option>
+        </select>
+        <button id="search-btn" class="montserrat">Search</button>
     </div>
+</div>
+<script>
+const searchInput = document.getElementById('search-input');
+const searchEngine = document.getElementById('search-engine');
+const searchBtn = document.getElementById('search-btn');
 
-    <script>
-        const searchInput = document.getElementById('search-input');
-        const searchEngine = document.getElementById('search-engine');
-        const searchBtn = document.getElementById('search-btn');
+searchBtn.addEventListener('click', () => {
+    const query = searchInput.value.trim();
+    if (query) {
+        const url = `${searchEngine.value}${query}`;
+        window.location.href = url;
+    }
+});
 
-        searchBtn.addEventListener('click', () => {
-            const query = searchInput.value.trim();
-            if (query) {
-                const url = `${searchEngine.value}${query}`;
-                window.open(url, '_blank');
-            }
-        });
-
-        // Optional: Allow searching by pressing Enter
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                searchBtn.click();
-            }
-        });
-    </script>
+// Optional: Allow searching by pressing Enter
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        searchBtn.click();
+    }
+});
+</script>
 </body>
 </html>
